@@ -1,10 +1,10 @@
 # Online Python compiler (interpreter) to run Python online.
 # Write Python 3 code in this online editor and run it.
 # INPUT
-LOAN_AMT_INR        = 3*1000*1000
+LOAN_AMT_INR        = 3.2*1000*1000
 INTREST_RATE_YEAR   = 8.55
-NO_OF_YEARS         = 30
-INCR_EMI_BY_RATE    = 0.1
+NO_OF_YEARS         = 20
+INCR_EMI_BY_RATE    = 0.10
 EMI_CAP             = -1
 
 INTREST_RATE_MNTH   = INTREST_RATE_YEAR/12/100
@@ -33,7 +33,7 @@ def getClosBalYearly(openBal, emi, monthlyInterestRate):
         
         if(temp_openBal < 0.0):
             break;
-    print("Open Bal:%.3f EMI:%.3f Interest Paid:%.3f Principal Paid:%.3f Close Bal:%.3f"%(openBal, emi, interestPaid, principalPaid, closeBal))
+    print("Open Bal:%.3f EMI:%.3f Interest Paid:%.3f Principal Paid:%.3f Total Amt Paid:%.3f Close Bal:%.3f"%(openBal, emi, interestPaid, principalPaid, interestPaid + principalPaid, closeBal))
     return(closeBal, interestPaid, principalPaid, i)
 
 temp_openBal                = LOAN_AMT_INR    
@@ -50,7 +50,7 @@ for i in range(1, NO_OF_YEARS+1):
     if(EMI_CAP > new_emi) or (EMI_CAP == -1) :
         temp_emi = new_emi
     else:
-        temp_emi = temp_emi
+        temp_emi = EMI_CAP
     
     total_interestPaid += temp_interestPaid    
     total_noOfMonths += noOfMonths 
